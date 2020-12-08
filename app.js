@@ -11,6 +11,48 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+
+
+
+
+
+// Begin program with an inquirer prompt that queues the user to answer the four questions that class an Employee.
+const buildTeamPage = () => {
+inquirer
+.prompt([
+{type:'input',
+    message:`enter Employee name:`,
+    name:'Name',
+},
+{type:'input',
+message:'Enter Employee ID number',
+name:'ID',
+},
+{type:'input',
+message:'Enter employee Email',
+name:'Email',
+},
+{type:'rawlist',
+message:'what is the role of the Employee at the company?',
+choices:['Manager','Engineer','Intern'],
+name:'Role',
+}, 
+])
+.then((response) => {
+    
+let Name = response.Name;
+let ID = response.ID;
+let Email = response.Email;
+let Role = response.Role;
+
+
+const newHire = new Employee(Name,ID,Email,Role)
+
+
+});
+
+}
+buildTeamPage()
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
@@ -33,3 +75,5 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+module.exports = newHire;
